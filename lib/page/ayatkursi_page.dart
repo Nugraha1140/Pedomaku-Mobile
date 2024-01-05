@@ -29,74 +29,51 @@ class _AyatKursiState extends State<AyatKursi> {
   Widget build(BuildContext context) {
     return Scaffold(
         backgroundColor: Color(0xff44aca0),
-        body: SafeArea(
-            child:
-                Column(mainAxisAlignment: MainAxisAlignment.center, children: [
-          Stack(
-            children: [
-              Align(
-                alignment: Alignment.topLeft,
-                child: IconButton(
-                  onPressed: () => Navigator.of(context).pop(),
-                  icon: Icon(Icons.arrow_back, color: Colors.white),
+        body: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
+          Container(
+            padding: const EdgeInsets.symmetric(horizontal: 10),
+            margin: const EdgeInsets.only(top: 10, bottom: 20),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                InkWell(
+                    onTap: () {
+                      Navigator.pop(context);
+                    },
+                    child: const Icon(
+                      Icons.chevron_left_rounded,
+                      size: 30,
+                      color: Colors.white,
+                    )),
+                const Column(
+                  children: [
+                    Text(
+                      "Ayat Kursi",
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 16,
+                          fontWeight: FontWeight.w600),
+                    ),
+                    Text(
+                      "Bacaan Ayat Kursi dengan tafsirnya",
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 8,
+                          fontWeight: FontWeight.w600),
+                    ),
+                  ],
                 ),
-              ),
-              Align(
-                alignment: Alignment.topLeft,
-                child: Container(
-                  margin: EdgeInsets.only(top: 80),
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(30),
-                      color: Color(0xffb4ddd9)),
-                  height: 200,
-                  width: MediaQuery.of(context).size.width,
-                  child: Container(
-                      margin: EdgeInsets.only(top: 120, left: 20),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text(
-                            "Ayat Kursi",
-                            style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 20,
-                                fontWeight: FontWeight.bold),
-                          ),
-                          Text(
-                            "Bacaan Ayat Kursi dengan tafsirnya",
-                            style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 12,
-                                fontWeight: FontWeight.bold),
-                          ),
-                        ],
-                      )),
-                ),
-              ),
-              Align(
-                alignment: Alignment.topRight,
-                child: ClipRRect(
-                  borderRadius: BorderRadius.only(
-                    topLeft: Radius.circular(30),
-                    bottomLeft: Radius.circular(30),
-                    bottomRight: Radius.circular(30),
-                  ),
-                  child: Image.asset(
-                    "assets/images/bg_quran.jpg",
-                    width: 330,
-                    height: 200,
-                    fit: BoxFit.fill,
-                  ),
-                ),
-              ),
-            ],
+                const Icon(
+                  Icons.share_outlined,
+                  color: Colors.white,
+                )
+              ],
+            ),
           ),
           Expanded(
             child: Container(
-              margin: EdgeInsets.only(top: 20),
               child: FutureBuilder<AyatKursiModel>(
-                future: fetchSurah(),
+                future: AyatKursidata.getAyatKursi(),
                 builder: (context, snapshot) {
                   if (snapshot.hasError) {
                     return Center(child: Text("${snapshot.error}"));
@@ -104,7 +81,7 @@ class _AyatKursiState extends State<AyatKursi> {
                     AyatKursiModel ayat = snapshot.data!;
                     return ListView(
                       children: [
-                        Center(
+                        const Center(
                           child: Text(
                             "بِسْمِ اللَّـهِ الرَّحْمَـٰنِ الرَّحِيمِ",
                             style: TextStyle(
@@ -114,12 +91,12 @@ class _AyatKursiState extends State<AyatKursi> {
                             ),
                           ),
                         ),
-                        Center(
+                        const Center(
                           child: Text(
                             "Dengan menyebut nama Allah Yang Maha Pemurah lagi Maha Penyayang",
                             style: TextStyle(
                               color: Colors.white,
-                              fontSize: 12,
+                              fontSize: 11,
                               fontStyle: FontStyle.italic,
                             ),
                           ),
@@ -127,7 +104,7 @@ class _AyatKursiState extends State<AyatKursi> {
                         SizedBox(height: 20),
                         SelectableText(
                           ayat.arabic,
-                          style: TextStyle(
+                          style: const TextStyle(
                             color: Colors.white,
                             fontSize: 20,
                             fontWeight: FontWeight.bold,
@@ -139,7 +116,7 @@ class _AyatKursiState extends State<AyatKursi> {
                           margin: EdgeInsets.symmetric(horizontal: 10),
                           child: SelectableText(
                             ayat.latin,
-                            style: TextStyle(
+                            style: const TextStyle(
                               color: Colors.white,
                               fontSize: 12,
                               fontStyle: FontStyle.italic,
@@ -152,7 +129,7 @@ class _AyatKursiState extends State<AyatKursi> {
                           margin: EdgeInsets.symmetric(horizontal: 10),
                           child: SelectableText(
                             ayat.translation,
-                            style: TextStyle(
+                            style: const TextStyle(
                               color: Colors.white,
                               fontSize: 14,
                             ),
@@ -164,7 +141,7 @@ class _AyatKursiState extends State<AyatKursi> {
                           margin: EdgeInsets.symmetric(horizontal: 10),
                           child: SelectableText(
                             ayat.tafsir,
-                            style: TextStyle(
+                            style: const TextStyle(
                               color: Colors.white,
                               fontSize: 14,
                             ),
@@ -174,14 +151,16 @@ class _AyatKursiState extends State<AyatKursi> {
                       ],
                     );
                   } else {
-                    return Center(
-                      child: CircularProgressIndicator(),
+                    return const Center(
+                      child: CircularProgressIndicator(
+                        color: Colors.white,
+                      ),
                     );
                   }
                 },
               ),
             ),
           )
-        ])));
+        ]));
   }
 }

@@ -1,4 +1,4 @@
-package com.example.pedomanku
+package com.makerindo.pedomanku
 
 import io.flutter.embedding.android.FlutterActivity
 

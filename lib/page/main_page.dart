@@ -15,15 +15,15 @@ class _BerandaPageState extends State<BerandaPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
-      body: SafeArea(
-        child: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Container(
-                margin: EdgeInsets.all(10),
-                child: Expanded(
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Container(
+                  margin: const EdgeInsets.all(10),
                   child: InkWell(
                     highlightColor: Colors.transparent,
                     splashColor: Colors.transparent,
@@ -31,12 +31,12 @@ class _BerandaPageState extends State<BerandaPage> {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => BacaanDoaTahlil()));
+                              builder: (context) => const BacaanDoaTahlil()));
                     },
-                    child: Column(
+                    child: const Column(
                       children: [
                         Image(
-                          image: AssetImage("assets/images/ic_niat.png"),
+                          image: AssetImage("assets/images/tahlil.png"),
                           height: 100,
                           width: 100,
                         ),
@@ -44,17 +44,14 @@ class _BerandaPageState extends State<BerandaPage> {
                         Text(
                           "Doa Tahlil",
                           style: TextStyle(
-                              fontSize: 14, fontWeight: FontWeight.bold),
+                              fontSize: 14, fontWeight: FontWeight.w600),
                         ),
                       ],
                     ),
                   ),
                 ),
-              ),
-              SizedBox(height: 40),
-              Container(
-                margin: EdgeInsets.all(10),
-                child: Expanded(
+                Container(
+                  margin: const EdgeInsets.all(10),
                   child: InkWell(
                     highlightColor: Colors.transparent,
                     splashColor: Colors.transparent,
@@ -62,9 +59,9 @@ class _BerandaPageState extends State<BerandaPage> {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => BacaanSholat()));
+                              builder: (context) => const BacaanSholat()));
                     },
-                    child: Column(
+                    child: const Column(
                       children: [
                         Image(
                           image: AssetImage("assets/images/ic_niat.png"),
@@ -75,25 +72,29 @@ class _BerandaPageState extends State<BerandaPage> {
                         Text(
                           "Bacaan Sholat",
                           style: TextStyle(
-                              fontSize: 14, fontWeight: FontWeight.bold),
+                              fontSize: 14, fontWeight: FontWeight.w600),
                         ),
                       ],
                     ),
                   ),
                 ),
-              ),
-              SizedBox(height: 40),
-              Container(
-                margin: EdgeInsets.all(10),
-                child: Expanded(
+              ],
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Container(
+                  margin: const EdgeInsets.all(10),
                   child: InkWell(
                     highlightColor: Colors.transparent,
                     splashColor: Colors.transparent,
                     onTap: () {
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => BacaanDoa()));
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const BacaanDoa()));
                     },
-                    child: Column(
+                    child: const Column(
                       children: [
                         Image(
                           image: AssetImage("assets/images/ic_doa.png"),
@@ -104,25 +105,24 @@ class _BerandaPageState extends State<BerandaPage> {
                         Text(
                           "Bacaan Doa",
                           style: TextStyle(
-                              fontSize: 14, fontWeight: FontWeight.bold),
+                              fontSize: 14, fontWeight: FontWeight.w600),
                         ),
                       ],
                     ),
                   ),
                 ),
-              ),
-              SizedBox(height: 40),
-              Container(
-                margin: EdgeInsets.all(10),
-                child: Expanded(
+                Container(
+                  margin: const EdgeInsets.all(10),
                   child: InkWell(
                     highlightColor: Colors.transparent,
                     splashColor: Colors.transparent,
                     onTap: () {
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => AyatKursi()));
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const AyatKursi()));
                     },
-                    child: Column(
+                    child: const Column(
                       children: [
                         Image(
                           image: AssetImage("assets/images/ic_bacaan.png"),
@@ -133,15 +133,15 @@ class _BerandaPageState extends State<BerandaPage> {
                         Text(
                           "Ayat Kursi",
                           style: TextStyle(
-                              fontSize: 14, fontWeight: FontWeight.bold),
+                              fontSize: 14, fontWeight: FontWeight.w600),
                         ),
                       ],
                     ),
                   ),
                 ),
-              ),
-            ],
-          ),
+              ],
+            ),
+          ],
         ),
       ),
     );
